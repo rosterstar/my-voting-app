@@ -1,0 +1,30 @@
+# Глобальные настройки
+namespace: voting
+
+# Настройки для сервиса Vote (который ты собираешь сам)
+vote:
+  image:
+    repository: rstarostsenko/my-voting-app-vote
+    tag: latest # Будет перезаписываться из Jenkins
+  service:
+    port: 8080
+
+# Настройки для остальных компонентов (используем готовые образы)
+result:
+  image: dockersamples/example-voting-app-result:before-jdk-11
+  service:
+    port: 8081
+
+redis:
+  image: redis:alpine
+  service:
+    port: 6379
+
+db:
+  image: postgres:15-alpine
+  service:
+    port: 5432
+
+worker:
+  image: dockersamples/example-voting-app-worker
+
